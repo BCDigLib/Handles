@@ -1,0 +1,64 @@
+Handle batch file syntax - use when creating batch files for loading into Handle Client. See Brian for SECRETPHRASE.
+
+
+SAMPLES
+1) Standard Special Collection (BCD01) - Handle will resolve to Resource Discovery screen. Handle link is http://hdl.handle.net/2345/2698
+CREATE 2345/2698
+100 HS_ADMIN 86400 1110 ADMIN 300:111111111111:2345/2698
+300 HS_SECKEY 86400 1100 UTF8 SECRETPHRASE
+201 URL 86400 1110 UTF8 http://dcollections.bc.edu/R/-?func=dbin-jump-full&object_id=372770&local_base=GEN01-BCD01
+
+2) Finding Aid in BCD01 - Handle will resolve to digital object
+CREATE 2345/3139
+100 HS_ADMIN 86400 1110 ADMIN 300:111111111111:2345/3139
+300 HS_SECKEY 86400 1100 UTF8 SECRETPHRASE
+201 URL 86400 1110 UTF8 http://dcollections.bc.edu/webclient/DeliveryManager?pid=395916&custom_att_2=simple_viewer&local_base=GEN01-BCD01
+
+3) Standard eScholarship Link - Handle will resolve to Resource Discovery screen
+CREATE 2345/3144
+100 HS_ADMIN 86400 1110 ADMIN 300:111111111111:2345/3144
+300 HS_SECKEY 86400 1100 UTF8 SECRETPHRASE
+201 URL 86400 1110 UTF8 http://dcollections.bc.edu/R/-?func=dbin-jump-full&object_id=395965&local_base=GEN01-BCD03
+
+4) Sample for derived (.1 and .2) handles
+CREATE 2345.1/1
+100 HS_ADMIN 86400 1110 ADMIN 300:111111111111:2345.1/1
+300 HS_SECKEY 86400 1100 UTF8 SECRETPHRASE
+201 URL 86400 1110 UTF8 http://dcollections.bc.edu/R/-?func=dbin-jump-full&object_id=317227&local_base=GEN01-BCD01
+
+
+Templates for above:
+
+1) Standard Special Collection (BCD01) - Handle will resolve to Resource Discovery screen.
+CREATE 2345/####
+100 HS_ADMIN 86400 1110 ADMIN 300:111111111111:2345/####
+300 HS_SECKEY 86400 1100 UTF8 SECRETPHRASE
+201 URL 86400 1110 UTF8 http://dcollections.bc.edu/R/-?func=dbin-jump-full&object_id=######&local_base=GEN01-BCD01
+
+2) Finding Aid in BCD01 - Handle will resolve to digital object.
+CREATE 2345/####
+100 HS_ADMIN 86400 1110 ADMIN 300:111111111111:2345/####
+300 HS_SECKEY 86400 1100 UTF8 SECRETPHRASE
+201 URL 86400 1110 UTF8 http://dcollections.bc.edu/webclient/DeliveryManager?pid=######&custom_att_2=simple_viewer&local_base=GEN01-BCD01
+
+3) Standard eScholarship Link - Handle will resolve to Resource Discovery screen
+CREATE 2345/####
+100 HS_ADMIN 86400 1110 ADMIN 300:111111111111:2345/####
+300 HS_SECKEY 86400 1100 UTF8 SECRETPHRASE
+201 URL 86400 1110 UTF8 http://dcollections.bc.edu/R/-?func=dbin-jump-full&object_id=######&local_base=GEN01-BCD03
+
+
+Description for batch file
+CREATE 2345/####  --> ##### will be replaced by actual handle value
+100 HS_ADMIN 86400 1110 ADMIN 300:111111111111:2345/#### --> ##### will be replaced by actual handle value
+300 HS_SECKEY 86400 1100 UTF8 SECRETPHRASE --> This line is static - SECRETPHRASE is not included here.
+201 URL 86400 1110 UTF8 http://dcollections.bc.edu/R/-?func=dbin-jump-full&object_id=######&local_base=GEN01-BCD03
+    --> The initial part of this line is static. The URL will be replaced by the actual link syntax you want the handle to resolve to
+    
+    Resource Discovery Link - object_id is PID value. local_base will be either GEN01-BCD01 for Special Collections, or GEN01-BCD03 for eScholarship.
+    http://dcollections.bc.edu/R/-?func=dbin-jump-full&object_id=######&local_base=GEN01-BCD01
+
+    Digital Object Link - pid is pid. local_base as defined above
+    http://dcollections.bc.edu/webclient/DeliveryManager?pid=######&custom_att_2=simple_viewer&local_base=GEN01-BCD01
+    
+
