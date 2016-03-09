@@ -10,7 +10,7 @@
                     <xsl:text>100 HS_ADMIN 86400 1110 ADMIN 300:111111111111:</xsl:text><xsl:value-of select="normalize-space(handle)"/>
             <xsl:text>
 </xsl:text>    
-<xsl:text>300 HS_SECKEY 86400 1100 UTF8 adm1nhdl</xsl:text>
+<xsl:text>300 HS_SECKEY 86400 1100 UTF8 XXXXXXXX</xsl:text>
             <xsl:text>
 </xsl:text>            
             <!-- RD Record -->            
